@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Felix's Valentine's Invitation for Felistus</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
+            padding: 20px;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 8px solid #ff4081;
+        }
+        
+        .heart-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #ff4081;
+            font-size: 24px;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        
+        .content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            margin-bottom: 30px;
+        }
+        
+        .names {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            color: #d32f2f;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .names span {
+            color: #ff4081;
+        }
+        
+        h1 {
+            color: #d32f2f;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            color: #555;
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+        
+        .message {
+            background-color: #fff5f7;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 40px;
+            border-left: 8px solid #ff4081;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            position: relative;
+        }
+        
+        .message:before {
+            content: '"';
+            font-family: 'Dancing Script', cursive;
+            font-size: 120px;
+            color: rgba(255, 64, 129, 0.2);
+            position: absolute;
+            top: -30px;
+            left: 10px;
+        }
+        
+        .message p {
+            font-size: 1.3rem;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .signature {
+            text-align: right;
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: #ff4081;
+            margin-top: 20px;
+        }
+        
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            position: relative;
+            min-height: 200px;
+        }
+        
+        .btn {
+            padding: 20px 50px;
+            font-size: 1.8rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            z-index: 10;
+            position: relative;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .yes-btn {
+            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            color: white;
+        }
+        
+        .yes-btn:hover {
+            background: linear-gradient(45deg, #45a049, #7cb342);
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .no-btn {
+            background: linear-gradient(45deg, #f44336, #ff9800);
+            color: white;
+            position: absolute;
+            transition: left 0.2s, top 0.2s;
+        }
+        
+        .no-btn:hover {
+            background: linear-gradient(45deg, #d32f2f, #f57c00);
+        }
+        
+        .footer {
+            margin-top: 50px;
+            color: #777;
+            font-size: 1rem;
+        }
+        
+        .hearts-counter {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #ff4081;
+            background-color: #fff5f7;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 50px;
+        }
+        
+        .response-message {
+            margin-top: 30px;
+            font-size: 1.8rem;
+            color: #d32f2f;
+            font-weight: bold;
+            min-height: 60px;
+            opacity: 0;
+            transition: opacity 0.5s;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .response-message.show {
+            opacity: 1;
+        }
+        
+        .date-place {
+            background-color: #fff5f7;
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 1.2rem;
+            color: #d32f2f;
+            font-weight: 600;
+        }
+        
+        .date-place i {
+            margin-right: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+            
+            .names {
+                font-size: 2.8rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .btn {
+                padding: 18px 40px;
+                font-size: 1.5rem;
+            }
+            
+            .options {
+                min-height: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .names {
+                font-size: 2.2rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .btn {
+                padding: 15px 30px;
+                font-size: 1.3rem;
+            }
+            
+            .options {
+                min-height: 350px;
+            }
+            
+            .message p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart-background" id="heartBackground"></div>
+        
+        <div class="content">
+            <div class="header">
+                <div class="names">Felix <span>❤️</span> Felistus</div>
+                <h1>Will You Be My Valentine? ❤️</h1>
+                <p class="subtitle">Felistus, I have a very important question to ask you...</p>
+            </div>
+            
+            <div class="message">
+                <p>My dearest Felistus,</p>
+                <p>From the moment I met you, my world has been brighter and more beautiful.</p>
+                <p>This Valentine's Day, I can't imagine spending it with anyone but you.</p>
+                <p>You have a way of making everything better just by being you.</p>
+                <p>So I have one simple but very important question...</p>
+                <div class="signature">- Felix</div>
+            </div>
+            
+            <div class="date-place">
+                <i class="fas fa-calendar-alt"></i> February 14th, 2025
+                <i class="fas fa-map-marker-alt" style="margin-left: 20px;"></i> Your favorite place
+            </div>
+            
+            <div class="options" id="optionsContainer">
+                <button class="btn yes-btn" id="yesBtn">
+                    <i class="fas fa-heart"></i> YES, Felix! <i class="fas fa-heart"></i>
+                </button>
+                <button class="btn no-btn" id="noBtn">
+                    <i class="fas fa-times-circle"></i> No <i class="fas fa-times-circle"></i>
+                </button>
+            </div>
+            
+            <div class="response-message" id="responseMessage"></div>
+            
+            <div class="hearts-counter">
+                <i class="fas fa-heart"></i> 
+                Felistus's Hearts Collected: <span id="heartCount">0</span>
+                <i class="fas fa-heart"></i>
+            </div>
+            
+            <div class="footer">
+                <p>There's only one right answer, Felistus! 😉</p>
+                <p>P.S. The "No" button is just for decoration (and it runs away!)</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            const optionsContainer = document.getElementById('optionsContainer');
+            const responseMessage = document.getElementById('responseMessage');
+            const heartCountElement = document.getElementById('heartCount');
+            const heartBackground = document.getElementById('heartBackground');
+            
+            let heartCount = 0;
+            let escapeAttempts = 0;
+            let felixMessages = [
+                "Felistus, you know the right answer is YES! 😊",
+                "Felistus, don't be shy! Click YES! ❤️",
+                "Felistus, my heart beats only for you! 💓",
+                "Felistus, you're supposed to say YES! 😉",
+                "Felistus, you can't escape forever! ❤️",
+                "Felistus, please make me the happiest Felix!",
+                "Felistus, my dear, the answer is YES!",
+                "Felistus, I promise it'll be magical! ✨",
+                "Felistus, you + me = Perfect Valentine's 💕"
+            ];
+            
+            // Create floating hearts with F initials
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                // Alternate between heart and F
+                if (i % 3 === 0) {
+                    heart.innerHTML = '❤️';
+                } else if (i % 3 === 1) {
+                    heart.innerHTML = 'F<span style="font-size:0.7em;color:#d32f2f">ELIX</span>';
+                    heart.style.fontFamily = "'Dancing Script', cursive";
+                    heart.style.fontWeight = 'bold';
+                } else {
+                    heart.innerHTML = 'F<span style="font-size:0.7em;color:#ff4081">ELISTUS</span>';
+                    heart.style.fontFamily = "'Dancing Script', cursive";
+                    heart.style.fontWeight = 'bold';
+                }
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.top = `${Math.random() * 100}%`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heart.style.fontSize = `${Math.random() * 20 + 15}px`;
+                heartBackground.appendChild(heart);
+            }
+            
+            // Make the "No" button escape from cursor
+            noBtn.addEventListener('mouseover', function() {
+                escapeAttempts++;
+                
+                // Update heart count
+                heartCount += 5;
+                heartCountElement.textContent = heartCount;
+                
+                // Move the button to a random position within the container
+                const containerRect = optionsContainer.getBoundingClientRect();
+                const btnRect = noBtn.getBoundingClientRect();
+                
+                // Calculate max positions to keep button fully visible
+                const maxX = containerRect.width - btnRect.width;
+                const maxY = containerRect.height - btnRect.height;
+                
+                // Generate random position within container bounds
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+                
+                // Apply the new position
+                noBtn.style.left = `${randomX}px`;
+                noBtn.style.top = `${randomY}px`;
+                
+                // Add a personalized message based on attempts
+                if (escapeAttempts <= felixMessages.length) {
+                    showResponse(felixMessages[escapeAttempts - 1]);
+                } else {
+                    showResponse("Felistus, you're making this difficult! Click YES! ❤️");
+                }
+                
+                // Change button text occasionally
+                if (escapeAttempts % 3 === 0) {
+                    const funnyTexts = ["Maybe?", "I'm shy!", "Ask later", "Not sure", "Run away!"];
+                    noBtn.innerHTML = `<i class="fas fa-running"></i> ${funnyTexts[Math.floor(Math.random() * funnyTexts.length)]} <i class="fas fa-running"></i>`;
+                    setTimeout(() => {
+                        noBtn.innerHTML = '<i class="fas fa-times-circle"></i> No <i class="fas fa-times-circle"></i>';
+                    }, 1000);
+                }
+            });
+            
+            // When "Yes" is clicked
+            yesBtn.addEventListener('click', function() {
+                showResponse("YAY! You've made me the happiest Felix in the world! ❤️❤️❤️ Can't wait for our Valentine's date!");
+                yesBtn.innerHTML = '<i class="fas fa-heart"></i> THANK YOU, Felistus! <i class="fas fa-heart"></i>';
+                yesBtn.style.background = 'linear-gradient(45deg, #4CAF50, #8BC34A)';
+                yesBtn.style.transform = 'scale(1.2)';
+                yesBtn.style.transition = 'all 0.5s';
+                
+                // Add celebration hearts with names
+                for (let i = 0; i < 25; i++) {
+                    setTimeout(() => {
+                        createCelebrationHeart(i);
+                    }, i * 100);
+                }
+                
+                // Disable the no button
+                noBtn.style.display = 'none';
+                
+                // Update page title
+                document.title = "She Said YES! Felix ❤️ Felistus";
+                
+                // Change background to celebration mode
+                document.body.style.background = "linear-gradient(135deg, #ffafbd, #a0ffc3, #ffc3a0)";
+                document.body.style.backgroundSize = "400% 400%";
+                
+                // Animate the background
+                let pos = 0;
+                const bgAnimation = setInterval(() => {
+                    pos = (pos + 1) % 100;
+                    document.body.style.backgroundPosition = `${pos}% ${pos}%`;
+                }, 50);
+            });
+            
+            // When trying to click "No" (just in case)
+            noBtn.addEventListener('click', function() {
+                // Move it away again
+                noBtn.dispatchEvent(new Event('mouseover'));
+                
+                // Show message
+                showResponse("Nice try, Felistus! But you know the right answer is YES! 😊 Felix ❤️ Felistus forever!");
+                
+                // Add some hearts anyway
+                heartCount += 10;
+                heartCountElement.textContent = heartCount;
+            });
+            
+            // Function to show response messages
+            function showResponse(message) {
+                responseMessage.textContent = message;
+                responseMessage.classList.add('show');
+                
+                // Hide after 5 seconds
+                setTimeout(() => {
+                    responseMessage.classList.remove('show');
+                }, 5000);
+            }
+            
+            // Create celebration hearts
+            function createCelebrationHeart(index) {
+                const heart = document.createElement('div');
+                
+                // Alternate between heart and names
+                if (index % 4 === 0) {
+                    heart.innerHTML = 'FELIX';
+                    heart.style.color = '#d32f2f';
+                } else if (index % 4 === 1) {
+                    heart.innerHTML = '❤️';
+                    heart.style.color = '#ff4081';
+                } else if (index % 4 === 2) {
+                    heart.innerHTML = 'FELISTUS';
+                    heart.style.color = '#ff4081';
+                } else {
+                    heart.innerHTML = '❤️';
+                    heart.style.color = '#d32f2f';
+                }
+                
+                heart.style.position = 'fixed';
+                heart.style.fontSize = '30px';
+                heart.style.zIndex = '1000';
+                heart.style.fontWeight = 'bold';
+                heart.style.fontFamily = index % 4 === 0 || index % 4 === 2 ? "'Dancing Script', cursive" : "'Poppins', sans-serif";
+                heart.style.left = `${Math.random() * window.innerWidth}px`;
+                heart.style.top = `${window.innerHeight}px`;
+                heart.style.opacity = '0.9';
+                document.body.appendChild(heart);
+                
+                // Animate the heart
+                const animation = heart.animate([
+                    { transform: 'translateY(0) scale(1)', opacity: 1 },
+                    { transform: `translateY(-${window.innerHeight + 100}px) scale(0.5)`, opacity: 0 }
+                ], {
+                    duration: 2000,
+                    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                });
+                
+                // Remove after animation
+                animation.onfinish = () => {
+                    document.body.removeChild(heart);
+                };
+            }
+            
+            // Initialize the no button position
+            const containerRect = optionsContainer.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+            const maxX = containerRect.width - btnRect.width;
+            const maxY = containerRect.height - btnRect.height;
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+            
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+            
+            // Initial romantic message
+            setTimeout(() => {
+                showResponse("Felistus, I'm waiting for your answer... ❤️");
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
