@@ -2,123 +2,168 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Felix's Valentine's Invitation for Felistus</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Felix ❤️ Felistus | Valentine's Invitation</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        html {
+            font-size: 16px;
+            height: 100%;
         }
         
         body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
             min-height: 100vh;
-            background: linear-gradient(135deg, #ffafbd, #ffc3a0);
-            padding: 20px;
-            overflow-x: hidden;
+            min-height: -webkit-fill-available;
             font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffafbd 0%, #ffc3a0 100%);
+            padding: 0;
+            margin: 0;
+            overflow-x: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
+        /* Mobile-First Container */
         .container {
-            max-width: 800px;
             width: 100%;
-            text-align: center;
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            padding: 40px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 0;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.15);
             position: relative;
             overflow: hidden;
-            border: 8px solid #ff4081;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
+        @media (min-width: 768px) {
+            .container {
+                border-radius: 30px;
+                min-height: auto;
+                margin: 20px auto;
+                max-width: 450px;
+            }
+        }
+        
+        /* Heart Background */
         .heart-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            opacity: 0.1;
+            opacity: 0.05;
             z-index: 0;
+            pointer-events: none;
         }
         
         .heart {
             position: absolute;
             color: #ff4081;
-            font-size: 24px;
-            animation: float 6s infinite ease-in-out;
+            font-size: 18px;
+            animation: float 8s infinite ease-in-out;
         }
         
         @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(10deg); }
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-15px) rotate(10deg) scale(1.1); }
         }
         
-        .content {
+        /* Header Section */
+        .header {
+            padding: 25px 20px 15px;
+            text-align: center;
+            background: linear-gradient(135deg, #ff4081, #d32f2f);
+            color: white;
             position: relative;
             z-index: 1;
         }
         
-        .header {
-            margin-bottom: 30px;
-        }
-        
         .names {
             font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
-            color: #d32f2f;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.2;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
         
         .names span {
-            color: #ff4081;
+            display: inline-block;
+            margin: 0 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
         }
         
         h1 {
-            color: #d32f2f;
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: white;
         }
         
         .subtitle {
-            color: #555;
-            font-size: 1.4rem;
-            margin-bottom: 30px;
-            line-height: 1.5;
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
         }
         
-        .message {
-            background-color: #fff5f7;
-            border-radius: 20px;
-            padding: 25px;
-            margin-bottom: 40px;
-            border-left: 8px solid #ff4081;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            text-align: left;
+        /* Content Area */
+        .content {
+            flex: 1;
+            padding: 20px;
             position: relative;
+            z-index: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        /* Love Letter */
+        .message {
+            background: linear-gradient(135deg, #fff5f7, #ffeef2);
+            border-radius: 20px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.1);
+            border: 1px solid rgba(255, 64, 129, 0.1);
         }
         
         .message:before {
             content: '"';
             font-family: 'Dancing Script', cursive;
-            font-size: 120px;
-            color: rgba(255, 64, 129, 0.2);
+            font-size: 80px;
+            color: rgba(255, 64, 129, 0.15);
             position: absolute;
-            top: -30px;
-            left: 10px;
+            top: -15px;
+            left: 15px;
+            line-height: 1;
         }
         
         .message p {
-            font-size: 1.3rem;
-            color: #333;
+            font-size: 1rem;
             line-height: 1.6;
+            color: #333;
             margin-bottom: 15px;
             position: relative;
             z-index: 1;
@@ -127,348 +172,344 @@
         .signature {
             text-align: right;
             font-family: 'Dancing Script', cursive;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             color: #ff4081;
-            margin-top: 20px;
+            margin-top: 15px;
+            font-weight: 700;
         }
         
-        .options {
+        /* Date Info */
+        .date-place {
             display: flex;
             justify-content: center;
-            gap: 30px;
-            margin-top: 40px;
+            gap: 20px;
+            margin-bottom: 30px;
             flex-wrap: wrap;
+        }
+        
+        .date-box, .place-box {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            flex: 1;
+            min-width: 140px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 64, 129, 0.1);
+        }
+        
+        .date-box i, .place-box i {
+            color: #ff4081;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .date-title, .place-title {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .date-value, .place-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #d32f2f;
+        }
+        
+        /* Buttons Container - Mobile Optimized */
+        .options-container {
             position: relative;
-            min-height: 200px;
+            min-height: 250px;
+            margin: 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .buttons-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            position: relative;
         }
         
         .btn {
-            padding: 20px 50px;
-            font-size: 1.8rem;
+            padding: 18px 30px;
+            font-size: 1.4rem;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: bold;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            z-index: 10;
+            font-weight: 600;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            width: 85%;
+            max-width: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             position: relative;
-            font-family: 'Poppins', sans-serif;
+            z-index: 10;
+            -webkit-user-select: none;
+            user-select: none;
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
         }
         
         .yes-btn {
-            background: linear-gradient(45deg, #4CAF50, #8BC34A);
+            background: linear-gradient(135deg, #4CAF50, #45a049);
             color: white;
-        }
-        
-        .yes-btn:hover {
-            background: linear-gradient(45deg, #45a049, #7cb342);
-            transform: scale(1.05);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+            order: 1;
         }
         
         .no-btn {
-            background: linear-gradient(45deg, #f44336, #ff9800);
+            background: linear-gradient(135deg, #f44336, #d32f2f);
             color: white;
             position: absolute;
-            transition: left 0.2s, top 0.2s;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            touch-action: none;
+            z-index: 20;
         }
         
-        .no-btn:hover {
-            background: linear-gradient(45deg, #d32f2f, #f57c00);
+        /* No Button States */
+        .no-btn.running {
+            animation: runAway 0.5s ease-out;
         }
         
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 40px;
-            gap: 20px;
+        .no-btn.jumping {
+            animation: jumpAway 0.5s ease-out;
         }
         
-        .stat-box {
-            background: #fff5f7;
-            border-radius: 15px;
-            padding: 20px;
-            min-width: 200px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .no-btn.spinning {
+            animation: spinAway 0.5s ease-out;
         }
         
-        .stat-title {
-            font-size: 1rem;
-            color: #777;
-            margin-bottom: 10px;
+        @keyframes runAway {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100px) rotate(20deg); }
         }
         
-        .stat-value {
-            font-size: 2rem;
-            color: #ff4081;
-            font-weight: bold;
+        @keyframes jumpAway {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-50px); }
         }
         
-        .stat-value.money {
-            color: #4CAF50;
+        @keyframes spinAway {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(50px); }
         }
         
+        /* Mobile Touch Optimization */
+        .no-btn.mobile-touch {
+            transition: transform 0.2s ease-out;
+        }
+        
+        /* Heart Counter */
         .hearts-counter {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: #ff4081;
-            background-color: #fff5f7;
-            display: inline-block;
-            padding: 10px 20px;
+            background: linear-gradient(135deg, #fff5f7, #ffeef2);
             border-radius: 50px;
+            padding: 15px 25px;
+            margin: 20px auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            color: #d32f2f;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 64, 129, 0.1);
         }
         
+        .hearts-counter i {
+            color: #ff4081;
+            font-size: 1.3rem;
+        }
+        
+        /* Response Message */
         .response-message {
-            margin-top: 30px;
-            font-size: 1.8rem;
+            margin: 20px 0;
+            padding: 15px;
+            font-size: 1.4rem;
             color: #d32f2f;
-            font-weight: bold;
+            font-weight: 700;
             min-height: 60px;
             opacity: 0;
-            transition: opacity 0.5s;
+            transition: opacity 0.5s ease;
+            text-align: center;
             font-family: 'Dancing Script', cursive;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            border: 2px dashed #ff4081;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
         
         .response-message.show {
             opacity: 1;
         }
         
-        .donation-section {
-            margin-top: 40px;
-            padding: 25px;
-            background: linear-gradient(45deg, #f8f9fa, #e9ecef);
-            border-radius: 20px;
+        .response-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Funny No Button Texts */
+        .no-btn-texts {
             display: none;
-        }
-        
-        .donation-section.show {
-            display: block;
-            animation: fadeIn 1s;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .donation-title {
-            font-size: 1.8rem;
-            color: #d32f2f;
-            margin-bottom: 20px;
-        }
-        
-        .donation-options {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .donation-btn {
-            padding: 15px 25px;
-            background: white;
-            border: 2px solid #ff4081;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #d32f2f;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .donation-btn:hover {
-            background: #ff4081;
+            position: absolute;
+            background: rgba(255, 64, 129, 0.9);
             color: white;
-            transform: scale(1.05);
-        }
-        
-        .donation-btn.active {
-            background: #ff4081;
-            color: white;
-        }
-        
-        .custom-donation {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        
-        .custom-donation input {
-            padding: 12px;
-            border: 2px solid #ff4081;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            width: 150px;
-            text-align: center;
-        }
-        
-        .donate-btn {
-            padding: 15px 30px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 20px;
-        }
-        
-        .donate-btn:hover {
-            background: #45a049;
-            transform: scale(1.05);
-        }
-        
-        .payment-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            display: none;
-        }
-        
-        .payment-modal.show {
-            display: flex;
-        }
-        
-        .payment-content {
-            background: white;
-            padding: 40px;
+            padding: 8px 15px;
             border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
+            font-size: 1rem;
+            white-space: nowrap;
+            z-index: 30;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: textBubble 2s ease-out;
+        }
+        
+        @keyframes textBubble {
+            0% { opacity: 0; transform: translateX(-50%) translateY(10px); }
+            20% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 20px;
             text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+            background: #f9f9f9;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
         }
         
-        .payment-message {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #333;
+        .footer p {
+            margin-bottom: 8px;
         }
         
-        .close-modal {
-            padding: 10px 30px;
-            background: #ff4081;
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        
-        .visitor-counter {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: white;
-            padding: 15px;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .visitor-counter i {
-            color: #ff4081;
-            font-size: 1.5rem;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 30px 20px;
-            }
-            
+        /* Mobile-Specific Adjustments */
+        @media (max-width: 350px) {
             .names {
-                font-size: 2.8rem;
+                font-size: 2rem;
             }
             
             h1 {
-                font-size: 2.2rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .btn {
-                padding: 18px 40px;
                 font-size: 1.5rem;
             }
             
-            .options {
-                min-height: 300px;
+            .btn {
+                padding: 16px 25px;
+                font-size: 1.2rem;
+                width: 90%;
             }
             
-            .visitor-counter {
-                position: relative;
-                top: 0;
-                right: 0;
-                margin-bottom: 20px;
-                justify-content: center;
+            .date-place {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .date-box, .place-box {
+                width: 100%;
+                max-width: 250px;
             }
         }
         
-        @media (max-width: 480px) {
+        @media (min-width: 768px) {
+            html {
+                font-size: 18px;
+            }
+            
+            .container {
+                max-width: 450px;
+            }
+            
+            .header {
+                padding: 30px 25px 20px;
+            }
+            
             .names {
-                font-size: 2.2rem;
+                font-size: 3rem;
             }
             
             h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
             
-            .btn {
-                padding: 15px 30px;
-                font-size: 1.3rem;
+            .content {
+                padding: 25px;
             }
             
-            .options {
-                min-height: 350px;
+            .message {
+                padding: 30px 25px;
             }
             
-            .message p {
-                font-size: 1.1rem;
+            .btn:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             }
             
-            .stat-box {
-                min-width: 150px;
+            .btn:active {
+                transform: translateY(-1px);
+            }
+            
+            .yes-btn:hover {
+                background: linear-gradient(135deg, #45a049, #3d8b40);
+            }
+            
+            .no-btn:hover {
+                background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            }
+        }
+        
+        /* Portrait/Landscape Adjustments */
+        @media (max-height: 700px) and (orientation: landscape) {
+            .container {
+                max-height: 95vh;
+                overflow-y: auto;
+            }
+            
+            .header {
+                padding: 15px 20px 10px;
+            }
+            
+            .content {
+                padding: 15px 20px;
+            }
+            
+            .options-container {
+                min-height: 200px;
+                margin: 20px 0;
             }
         }
     </style>
 </head>
 <body>
-    <div class="visitor-counter">
-        <i class="fas fa-users"></i>
-        <div>
-            <div class="stat-title">Visitors</div>
-            <div class="stat-value" id="visitorCount">1</div>
-        </div>
-    </div>
-    
     <div class="container">
+        <!-- Animated Heart Background -->
         <div class="heart-background" id="heartBackground"></div>
         
+        <!-- Header -->
+        <div class="header">
+            <div class="names">Felix <span>❤️</span> Felistus</div>
+            <h1>Will You Be My Valentine?</h1>
+            <p class="subtitle">A very important question for you...</p>
+        </div>
+        
+        <!-- Main Content -->
         <div class="content">
-            <div class="header">
-                <div class="names">Felix <span>❤️</span> Felistus</div>
-                <h1>Will You Be My Valentine? ❤️</h1>
-                <p class="subtitle">Felistus, I have a very important question to ask you...</p>
-            </div>
-            
+            <!-- Love Letter -->
             <div class="message">
                 <p>My dearest Felistus,</p>
                 <p>From the moment I met you, my world has been brighter and more beautiful.</p>
@@ -478,404 +519,449 @@
                 <div class="signature">- Felix</div>
             </div>
             
-            <div class="stats-container">
-                <div class="stat-box">
-                    <div class="stat-title">Visitor Hearts</div>
-                    <div class="stat-value" id="totalHearts">0</div>
+            <!-- Date & Place -->
+            <div class="date-place">
+                <div class="date-box">
+                    <i class="fas fa-calendar-alt"></i>
+                    <div class="date-title">Date</div>
+                    <div class="date-value">Feb 14, 2025</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-title">Support Our Love</div>
-                    <div class="stat-value money" id="totalMoney">$0</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-title">Felistus's Hearts</div>
-                    <div class="stat-value" id="felistusHearts">0</div>
+                <div class="place-box">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="place-title">Place</div>
+                    <div class="place-value">Your Favorite Spot</div>
                 </div>
             </div>
             
-            <div class="options" id="optionsContainer">
-                <button class="btn yes-btn" id="yesBtn">
-                    <i class="fas fa-heart"></i> YES, Felix! <i class="fas fa-heart"></i>
-                </button>
-                <button class="btn no-btn" id="noBtn">
-                    <i class="fas fa-times-circle"></i> No <i class="fas fa-times-circle"></i>
-                </button>
+            <!-- Buttons Container -->
+            <div class="options-container" id="optionsContainer">
+                <div class="buttons-wrapper">
+                    <button class="btn yes-btn" id="yesBtn">
+                        <i class="fas fa-heart"></i> YES, Felix! <i class="fas fa-heart"></i>
+                    </button>
+                    <button class="btn no-btn" id="noBtn">
+                        <i class="fas fa-times-circle"></i> No <i class="fas fa-times-circle"></i>
+                    </button>
+                </div>
             </div>
             
-            <div class="response-message" id="responseMessage"></div>
-            
-            <div class="donation-section" id="donationSection">
-                <h3 class="donation-title">Support Felix & Felistus's Love Story 💕</h3>
-                <p style="margin-bottom: 20px; color: #555;">Help fund our perfect Valentine's date!</p>
-                
-                <div class="donation-options">
-                    <button class="donation-btn" data-amount="5">$5 💖</button>
-                    <button class="donation-btn" data-amount="10">$10 ❤️</button>
-                    <button class="donation-btn" data-amount="20">$20 💕</button>
-                    <button class="donation-btn" data-amount="50">$50 💝</button>
-                </div>
-                
-                <div class="custom-donation">
-                    <span style="font-size: 1.2rem; color: #555; align-self: center;">Or:</span>
-                    <input type="number" id="customAmount" placeholder="Custom $" min="1" max="1000">
-                    <button class="donation-btn" id="customBtn">Select</button>
-                </div>
-                
-                <button class="donate-btn" id="donateBtn">
-                    <i class="fas fa-gift"></i> Support Our Love
-                </button>
-                
-                <p style="margin-top: 15px; font-size: 0.9rem; color: #777;">
-                    Every contribution helps make our Valentine's Day extra special!
-                </p>
+            <!-- Response Message -->
+            <div class="response-message" id="responseMessage">
+                <div class="response-icon" id="responseIcon"></div>
+                <div id="responseText"></div>
             </div>
             
-            <div class="footer" style="margin-top: 40px;">
-                <p>There's only one right answer, Felistus! 😉</p>
-                <p>P.S. The "No" button is just for decoration (and it runs away!)</p>
+            <!-- Hearts Counter -->
+            <div class="hearts-counter">
+                <i class="fas fa-heart"></i>
+                <span id="attemptText">Felistus's Escape Attempts:</span> <span id="heartCount">0</span>
+                <i class="fas fa-heart"></i>
             </div>
         </div>
-    </div>
-    
-    <div class="payment-modal" id="paymentModal">
-        <div class="payment-content">
-            <h2 style="color: #ff4081; margin-bottom: 20px;">Thank You! ❤️</h2>
-            <div class="payment-message" id="paymentMessage"></div>
-            <div style="font-size: 1.2rem; color: #555; margin-bottom: 20px;">
-                Your support means the world to us!
-            </div>
-            <button class="close-modal" id="closeModal">Continue</button>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>There's only one right answer, Felistus! 😉</p>
+            <p>The "No" button is just for fun (it runs away!)</p>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Initialize variables
+            // DOM Elements
             const noBtn = document.getElementById('noBtn');
             const yesBtn = document.getElementById('yesBtn');
             const optionsContainer = document.getElementById('optionsContainer');
             const responseMessage = document.getElementById('responseMessage');
-            const donationSection = document.getElementById('donationSection');
-            const paymentModal = document.getElementById('paymentModal');
-            const paymentMessage = document.getElementById('paymentMessage');
-            const closeModal = document.getElementById('closeModal');
-            const donateBtn = document.getElementById('donateBtn');
-            const customBtn = document.getElementById('customBtn');
-            const customAmount = document.getElementById('customAmount');
+            const responseText = document.getElementById('responseText');
+            const responseIcon = document.getElementById('responseIcon');
+            const heartCountElement = document.getElementById('heartCount');
+            const attemptText = document.getElementById('attemptText');
+            const heartBackground = document.getElementById('heartBackground');
             
-            // Statistics
-            const visitorCountElement = document.getElementById('visitorCount');
-            const totalHeartsElement = document.getElementById('totalHearts');
-            const totalMoneyElement = document.getElementById('totalMoney');
-            const felistusHeartsElement = document.getElementById('felistusHearts');
+            // State Variables
+            let escapeAttempts = 0;
+            let isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            let touchStartX = 0;
+            let touchStartY = 0;
+            let isDragging = false;
             
-            // Load statistics from localStorage or initialize
-            let stats = JSON.parse(localStorage.getItem('felixFelistusStats')) || {
-                visitors: 1,
-                totalHearts: 0,
-                totalMoney: 0,
-                felistusHearts: 0
+            // ENHANCED FUNNY RESPONSES - Categories for variety
+            const funnyResponses = {
+                // Cheesy Pickup Lines
+                pickupLines: [
+                    "Is your name Google? Because you have everything I'm searching for!",
+                    "Are you a magician? Because whenever I look at you, everyone else disappears!",
+                    "Do you have a map? I keep getting lost in your eyes!",
+                    "Is there an airport nearby or is that just my heart taking off?",
+                    "Are you made of copper and tellurium? Because you're Cu-Te!",
+                    "Do you believe in love at first sight, or should I walk by again?",
+                    "If you were a vegetable, you'd be a cute-cumber!",
+                    "Are you a campfire? Because you're hot and I want s'more!",
+                    "Do you have a Band-Aid? I just scraped my knee falling for you!",
+                    "Is your dad a boxer? Because you're a knockout!"
+                ],
+                
+                // Funny Rejections of "No"
+                rejections: [
+                    "Error 404: 'No' option not found in this universe!",
+                    "System malfunction! Only 'YES' responses accepted!",
+                    "That's not how this works! That's not how any of this works!",
+                    "I think you misspelled 'YES'! Let me help you with that!",
+                    "The 'No' button is just for decoration, silly!",
+                    "I appreciate your creativity, but the answer is still YES!",
+                    "Nice try! But my heart only speaks 'YES' language!",
+                    "That's a funny way to spell 'Absolutely Yes'!",
+                    "I think your finger slipped! Let me move that 'No' away!",
+                    "My love for you has disabled the 'No' function!"
+                ],
+                
+                // Romantic Persuasion
+                persuasion: [
+                    "But think of all the chocolates we could share!",
+                    "I promise to write you bad poetry every day!",
+                    "We could have our own romantic comedy montage!",
+                    "I'll serenade you with love songs (off-key, but with passion)!",
+                    "Imagine all the cute couple selfies we could take!",
+                    "I'll learn to cook your favorite meal!",
+                    "We could star-gaze and name constellations after each other!",
+                    "I'll always save the last piece of cake for you!",
+                    "We could have coffee dates every Sunday morning!",
+                    "I'll remember all your favorite things, I promise!"
+                ],
+                
+                // Silly Threats
+                threats: [
+                    "I'll send you 100 heart emojis every day until you say yes!",
+                    "I'm prepared to do the chicken dance until you accept!",
+                    "I'll learn to play 'Love Story' on the kazoo for you!",
+                    "I'll write your name in the sand every day at the beach!",
+                    "I'll send you a dad joke every hour until Valentine's!",
+                    "I'm not above bribing you with unlimited pizza!",
+                    "I'll serenade you outside your window with a boombox!",
+                    "I'll learn all the lyrics to every Taylor Swift love song!",
+                    "I'm prepared to challenge anyone else to a duel for your heart!",
+                    "I'll send you a different flower every day for a month!"
+                ],
+                
+                // Movie/TV References
+                popCulture: [
+                    "You complete me! (Jerry Maguire style)",
+                    "As you wish! (Princess Bride reference)",
+                    "I'm just a boy, standing in front of a girl, asking her to be his Valentine!",
+                    "You had me at 'hello'! Now say 'yes'!",
+                    "I would go to the end of the world for you! (Or just to get coffee)",
+                    "You're the Sam to my Frodo!",
+                    "I'm hopelessly devoted to you! (Grease reference)",
+                    "You're the butter to my bread! (Julie & Julia)",
+                    "I see you! (Avatar style, but romantic)",
+                    "Always. (Snape's love, but happier)"
+                ],
+                
+                // Felix-specific messages
+                felixToFelistus: [
+                    "Felistus, you know we're meant to be! F + F = Forever!",
+                    "Felistus, our names even start with the same letter! It's fate!",
+                    "Felistus, imagine how cute 'Felix & Felistus' sounds together!",
+                    "Felistus, I'd walk through fire for you! (Or at least really hot sand)",
+                    "Felistus, you're the missing piece to my puzzle!",
+                    "Felistus, I'd climb the highest mountain for you! (With proper gear)",
+                    "Felistus, you're the WiFi to my internet!",
+                    "Felistus, you're the marshmallow to my hot chocolate!",
+                    "Felistus, you're the sunshine to my rainy day!",
+                    "Felistus, you're the plot twist I never saw coming but love!"
+                ]
             };
             
-            // Increment visitor count (only once per session)
-            if (!sessionStorage.getItem('hasVisited')) {
-                stats.visitors++;
-                sessionStorage.setItem('hasVisited', 'true');
-            }
-            
-            // Update display
-            updateStatsDisplay();
-            
-            // Save stats
-            localStorage.setItem('felixFelistusStats', JSON.stringify(stats));
-            
-            let heartCount = 0;
-            let escapeAttempts = 0;
-            let selectedDonationAmount = 10;
-            let felixMessages = [
-                "Felistus, you know the right answer is YES! 😊",
-                "Felistus, don't be shy! Click YES! ❤️",
-                "Felistus, my heart beats only for you! 💓",
-                "Felistus, you're supposed to say YES! 😉",
-                "Felistus, you can't escape forever! ❤️",
-                "Felistus, please make me the happiest Felix!",
-                "Felistus, my dear, the answer is YES!",
-                "Felistus, I promise it'll be magical! ✨",
-                "Felistus, you + me = Perfect Valentine's 💕"
+            // No button text variations
+            const noButtonTexts = [
+                "Nope! 😜", "Maybe Later? 🤔", "I'm Shy! 🙈", "Ask Again! 🔄",
+                "Run Away! 🏃‍♂️", "Too Fast! ⚡", "Not Today! 📅", "Escape! 🚀",
+                "Flee! 🌪️", "Hide! 🙈", "Dodge! 🥊", "Vanish! ✨",
+                "Poof! 🎩", "Gotta Go! 🚗", "Bye Felicia! 👋", "Nah! 🙅‍♂️",
+                "I'm Out! 🚪", "Can't Catch Me! 🐇", "Too Slow! 🐢", "Missed Me! 🎯"
             ];
             
-            // Create floating hearts with F initials
-            for (let i = 0; i < 25; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                // Alternate between heart and F
-                if (i % 3 === 0) {
-                    heart.innerHTML = '❤️';
-                } else if (i % 3 === 1) {
-                    heart.innerHTML = 'F<span style="font-size:0.7em;color:#d32f2f">ELIX</span>';
-                    heart.style.fontFamily = "'Dancing Script', cursive";
-                    heart.style.fontWeight = 'bold';
-                } else {
-                    heart.innerHTML = 'F<span style="font-size:0.7em;color:#ff4081">ELISTUS</span>';
-                    heart.style.fontFamily = "'Dancing Script', cursive";
-                    heart.style.fontWeight = 'bold';
+            // Response icons
+            const responseIcons = ["❤️", "💘", "💝", "💖", "💕", "💓", "💗", "💞", "😍", "🥰", "😘", "🤣", "😂", "😅", "😜", "🤪", "😎", "🤩", "🥳", "🎉"];
+            
+            // Create Floating Hearts
+            function createFloatingHearts() {
+                const heartCount = isMobile ? 15 : 25;
+                for (let i = 0; i < heartCount; i++) {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    
+                    if (i % 3 === 0) {
+                        heart.innerHTML = '❤️';
+                    } else if (i % 3 === 1) {
+                        heart.innerHTML = 'F<span style="font-size:0.7em;color:#d32f2f">ELIX</span>';
+                        heart.style.fontFamily = "'Dancing Script', cursive";
+                        heart.style.fontWeight = 'bold';
+                    } else {
+                        heart.innerHTML = 'F<span style="font-size:0.7em;color:#ff4081">ELISTUS</span>';
+                        heart.style.fontFamily = "'Dancing Script', cursive";
+                        heart.style.fontWeight = 'bold';
+                    }
+                    
+                    heart.style.left = `${Math.random() * 100}%`;
+                    heart.style.top = `${Math.random() * 100}%`;
+                    heart.style.animationDelay = `${Math.random() * 5}s`;
+                    heart.style.fontSize = `${Math.random() * 15 + 12}px`;
+                    
+                    heartBackground.appendChild(heart);
                 }
-                heart.style.left = `${Math.random() * 100}%`;
-                heart.style.top = `${Math.random() * 100}%`;
-                heart.style.animationDelay = `${Math.random() * 5}s`;
-                heart.style.fontSize = `${Math.random() * 20 + 15}px`;
-                document.getElementById('heartBackground').appendChild(heart);
             }
             
-            // Make the "No" button escape from cursor
-            noBtn.addEventListener('mouseover', function() {
-                escapeAttempts++;
-                
-                // Update heart count
-                heartCount += 5;
-                stats.felistusHearts += 5;
-                stats.totalHearts += 5;
-                updateStatsDisplay();
-                saveStats();
-                
-                // Move the button to a random position within the container
+            // Get a random funny response
+            function getRandomResponse() {
+                const categories = Object.keys(funnyResponses);
+                const randomCategory = categories[Math.floor(Math.random() * categories.length)];
+                const responses = funnyResponses[randomCategory];
+                return responses[Math.floor(Math.random() * responses.length)];
+            }
+            
+            // Move No Button with Animation
+            function moveNoButton() {
                 const containerRect = optionsContainer.getBoundingClientRect();
                 const btnRect = noBtn.getBoundingClientRect();
                 
-                // Calculate max positions to keep button fully visible
-                const maxX = containerRect.width - btnRect.width;
-                const maxY = containerRect.height - btnRect.height;
+                const maxX = containerRect.width - btnRect.width - 20;
+                const maxY = containerRect.height - btnRect.height - 20;
                 
-                // Generate random position within container bounds
-                const randomX = Math.random() * maxX;
-                const randomY = Math.random() * maxY;
+                if (maxX <= 0 || maxY <= 0) return;
                 
-                // Apply the new position
+                const randomX = Math.random() * maxX + 10;
+                const randomY = Math.random() * maxY + 10;
+                
+                // Random animation style
+                const animations = ['running', 'jumping', 'spinning'];
+                const randomAnim = animations[Math.floor(Math.random() * animations.length)];
+                
+                noBtn.classList.add(randomAnim);
+                setTimeout(() => {
+                    noBtn.classList.remove(randomAnim);
+                }, 500);
+                
                 noBtn.style.left = `${randomX}px`;
                 noBtn.style.top = `${randomY}px`;
                 
-                // Add a personalized message based on attempts
-                if (escapeAttempts <= felixMessages.length) {
-                    showResponse(felixMessages[escapeAttempts - 1]);
-                } else {
-                    showResponse("Felistus, you're making this difficult! Click YES! ❤️");
-                }
+                // Change button text
+                const randomText = noButtonTexts[Math.floor(Math.random() * noButtonTexts.length)];
+                noBtn.innerHTML = `<i class="fas fa-running"></i> ${randomText} <i class="fas fa-running"></i>`;
                 
-                // Change button text occasionally
-                if (escapeAttempts % 3 === 0) {
-                    const funnyTexts = ["Maybe?", "I'm shy!", "Ask later", "Not sure", "Run away!"];
-                    noBtn.innerHTML = `<i class="fas fa-running"></i> ${funnyTexts[Math.floor(Math.random() * funnyTexts.length)]} <i class="fas fa-running"></i>`;
-                    setTimeout(() => {
-                        noBtn.innerHTML = '<i class="fas fa-times-circle"></i> No <i class="fas fa-times-circle"></i>';
-                    }, 1000);
-                }
-            });
+                setTimeout(() => {
+                    noBtn.innerHTML = '<i class="fas fa-times-circle"></i> No <i class="fas fa-times-circle"></i>';
+                }, 1000);
+            }
             
-            // When "Yes" is clicked
-            yesBtn.addEventListener('click', function() {
-                showResponse("YAY! You've made me the happiest Felix in the world! ❤️❤️❤️ Can't wait for our Valentine's date!");
-                yesBtn.innerHTML = '<i class="fas fa-heart"></i> THANK YOU, Felistus! <i class="fas fa-heart"></i>';
-                yesBtn.style.background = 'linear-gradient(45deg, #4CAF50, #8BC34A)';
-                yesBtn.style.transform = 'scale(1.2)';
-                yesBtn.style.transition = 'all 0.5s';
+            // Show Response with Icon
+            function showResponse(message) {
+                const randomIcon = responseIcons[Math.floor(Math.random() * responseIcons.length)];
+                responseIcon.textContent = randomIcon;
+                responseText.textContent = message;
+                responseMessage.classList.add('show');
                 
-                // Show donation section
-                donationSection.classList.add('show');
+                setTimeout(() => {
+                    responseMessage.classList.remove('show');
+                }, 4000);
+            }
+            
+            // Handle No Button Interaction
+            function handleNoButtonInteraction() {
+                escapeAttempts++;
+                heartCountElement.textContent = escapeAttempts;
                 
-                // Add big hearts reward
-                stats.felistusHearts += 100;
-                stats.totalHearts += 100;
-                updateStatsDisplay();
-                saveStats();
-                
-                // Add celebration hearts with names
-                for (let i = 0; i < 25; i++) {
-                    setTimeout(() => {
-                        createCelebrationHeart(i);
-                    }, i * 100);
+                // Update attempt text based on count
+                if (escapeAttempts === 1) {
+                    attemptText.textContent = "First escape attempt:";
+                } else if (escapeAttempts === 5) {
+                    attemptText.textContent = "5th escape attempt:";
+                } else if (escapeAttempts === 10) {
+                    attemptText.textContent = "10th escape attempt:";
+                    showResponse("Wow, you're persistent! But I'm more persistent! ❤️");
+                } else if (escapeAttempts === 20) {
+                    attemptText.textContent = "20th escape attempt:";
+                    showResponse("Okay, I'm impressed! But still... say YES! 😂");
                 }
                 
-                // Disable the no button
+                // Move button
+                moveNoButton();
+                
+                // Show funny response (more frequent at higher attempts)
+                if (escapeAttempts % 2 === 0 || escapeAttempts > 5) {
+                    const response = getRandomResponse();
+                    showResponse(response);
+                }
+                
+                // Special messages at certain milestones
+                if (escapeAttempts === 3) {
+                    showResponse("Third time's the charm! Now say YES! 💕");
+                } else if (escapeAttempts === 7) {
+                    showResponse("Lucky number 7! Perfect for a YES! 🍀");
+                } else if (escapeAttempts === 13) {
+                    showResponse("Not unlucky 13! Make it lucky by saying YES! 🎰");
+                } else if (escapeAttempts === 25) {
+                    showResponse("25 attempts! You deserve a prize... say YES and claim it! 🏆");
+                }
+            }
+            
+            // Handle Yes Button Click
+            function handleYesButtonClick() {
+                const victoryMessages = [
+                    "YES! You've made me the happiest Felix in the universe! 🌌",
+                    "YAY! Our love story officially begins! 📖❤️",
+                    "WOO-HOO! Best Valentine's Day ever starts now! 🎉",
+                    "HEART EYES! Can't wait to celebrate with you! 😍",
+                    "VICTORY! You just made the best decision ever! 🏆"
+                ];
+                
+                const randomVictory = victoryMessages[Math.floor(Math.random() * victoryMessages.length)];
+                showResponse(randomVictory);
+                
+                yesBtn.innerHTML = '<i class="fas fa-heart"></i> THANK YOU, Felistus! <i class="fas fa-heart"></i>';
+                yesBtn.style.background = 'linear-gradient(135deg, #45a049, #3d8b40)';
+                yesBtn.style.transform = 'scale(1.05)';
+                
+                // Add celebration hearts
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => createCelebrationHeart(i), i * 100);
+                }
+                
+                // Hide no button
                 noBtn.style.display = 'none';
                 
                 // Update page title
-                document.title = "She Said YES! Felix ❤️ Felistus";
+                document.title = "SHE SAID YES! Felix ❤️ Felistus Forever!";
                 
-                // Change background to celebration mode
-                document.body.style.background = "linear-gradient(135deg, #ffafbd, #a0ffc3, #ffc3a0)";
+                // Change background
+                document.body.style.background = "linear-gradient(135deg, #ffafbd, #a0ffc3, #ffc3a0, #ffb3a0)";
                 document.body.style.backgroundSize = "400% 400%";
                 
-                // Animate the background
+                // Animate background
                 let pos = 0;
-                const bgAnimation = setInterval(() => {
-                    pos = (pos + 1) % 100;
+                setInterval(() => {
+                    pos = (pos + 0.5) % 100;
                     document.body.style.backgroundPosition = `${pos}% ${pos}%`;
                 }, 50);
-            });
-            
-            // When trying to click "No" (just in case)
-            noBtn.addEventListener('click', function() {
-                // Move it away again
-                noBtn.dispatchEvent(new Event('mouseover'));
-                
-                // Show message
-                showResponse("Nice try, Felistus! But you know the right answer is YES! 😊 Felix ❤️ Felistus forever!");
-                
-                // Add some hearts anyway
-                heartCount += 10;
-                stats.felistusHearts += 10;
-                stats.totalHearts += 10;
-                updateStatsDisplay();
-                saveStats();
-            });
-            
-            // Donation functionality
-            document.querySelectorAll('.donation-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // Remove active class from all buttons
-                    document.querySelectorAll('.donation-btn').forEach(b => {
-                        b.classList.remove('active');
-                    });
-                    
-                    // Add active class to clicked button
-                    this.classList.add('active');
-                    
-                    // Set selected amount
-                    selectedDonationAmount = parseInt(this.dataset.amount);
-                });
-            });
-            
-            customBtn.addEventListener('click', function() {
-                const amount = parseInt(customAmount.value);
-                if (amount && amount > 0 && amount <= 1000) {
-                    selectedDonationAmount = amount;
-                    
-                    // Remove active class from all buttons
-                    document.querySelectorAll('.donation-btn').forEach(b => {
-                        b.classList.remove('active');
-                    });
-                    
-                    // Update custom button text
-                    customBtn.textContent = `$${amount} Selected`;
-                    customBtn.classList.add('active');
-                } else {
-                    alert("Please enter a valid amount between $1 and $1000");
-                }
-            });
-            
-            donateBtn.addEventListener('click', function() {
-                // In a real app, this would connect to a payment processor
-                // For demo, we'll just show a thank you message
-                
-                // Add to total money
-                stats.totalMoney += selectedDonationAmount;
-                updateStatsDisplay();
-                saveStats();
-                
-                // Show payment modal
-                paymentMessage.textContent = `Thank you for your donation of $${selectedDonationAmount}! This will help make our Valentine's Day unforgettable.`;
-                paymentModal.classList.add('show');
-                
-                // Add hearts as thank you
-                stats.totalHearts += selectedDonationAmount * 10;
-                updateStatsDisplay();
-                saveStats();
-            });
-            
-            closeModal.addEventListener('click', function() {
-                paymentModal.classList.remove('show');
-            });
-            
-            // Function to show response messages
-            function showResponse(message) {
-                responseMessage.textContent = message;
-                responseMessage.classList.add('show');
-                
-                // Hide after 5 seconds
-                setTimeout(() => {
-                    responseMessage.classList.remove('show');
-                }, 5000);
             }
             
-            // Create celebration hearts
+            // Create Celebration Heart
             function createCelebrationHeart(index) {
                 const heart = document.createElement('div');
+                heart.style.position = 'fixed';
+                heart.style.zIndex = '9999';
+                heart.style.pointerEvents = 'none';
+                heart.style.fontWeight = 'bold';
                 
-                // Alternate between heart and names
                 if (index % 4 === 0) {
                     heart.innerHTML = 'FELIX';
                     heart.style.color = '#d32f2f';
+                    heart.style.fontFamily = "'Dancing Script', cursive";
                 } else if (index % 4 === 1) {
                     heart.innerHTML = '❤️';
                     heart.style.color = '#ff4081';
                 } else if (index % 4 === 2) {
                     heart.innerHTML = 'FELISTUS';
                     heart.style.color = '#ff4081';
+                    heart.style.fontFamily = "'Dancing Script', cursive";
                 } else {
-                    heart.innerHTML = '❤️';
-                    heart.style.color = '#d32f2f';
+                    heart.innerHTML = 'YES!';
+                    heart.style.color = '#4CAF50';
                 }
                 
-                heart.style.position = 'fixed';
-                heart.style.fontSize = '30px';
-                heart.style.zIndex = '1000';
-                heart.style.fontWeight = 'bold';
-                heart.style.fontFamily = index % 4 === 0 || index % 4 === 2 ? "'Dancing Script', cursive" : "'Poppins', sans-serif";
-                heart.style.left = `${Math.random() * window.innerWidth}px`;
-                heart.style.top = `${window.innerHeight}px`;
+                const startX = Math.random() * window.innerWidth;
+                heart.style.left = `${startX}px`;
+                heart.style.top = `${window.innerHeight + 50}px`;
+                heart.style.fontSize = `${Math.random() * 25 + 20}px`;
                 heart.style.opacity = '0.9';
+                
                 document.body.appendChild(heart);
                 
-                // Animate the heart
                 const animation = heart.animate([
                     { transform: 'translateY(0) scale(1)', opacity: 1 },
-                    { transform: `translateY(-${window.innerHeight + 100}px) scale(0.5)`, opacity: 0 }
+                    { transform: `translateY(-${window.innerHeight + 100}px) scale(0.5) rotate(${Math.random() * 360}deg)`, opacity: 0 }
                 ], {
                     duration: 2000,
                     easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
                 });
                 
-                // Remove after animation
-                animation.onfinish = () => {
-                    document.body.removeChild(heart);
-                };
+                animation.onfinish = () => heart.remove();
             }
             
-            // Initialize the no button position
-            const containerRect = optionsContainer.getBoundingClientRect();
-            const btnRect = noBtn.getBoundingClientRect();
-            const maxX = containerRect.width - btnRect.width;
-            const maxY = containerRect.height - btnRect.height;
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
-            
-            noBtn.style.left = `${randomX}px`;
-            noBtn.style.top = `${randomY}px`;
-            
-            // Update stats display
-            function updateStatsDisplay() {
-                visitorCountElement.textContent = stats.visitors;
-                totalHeartsElement.textContent = stats.totalHearts;
-                totalMoneyElement.textContent = `$${stats.totalMoney}`;
-                felistusHeartsElement.textContent = stats.felistusHearts;
+            // Mobile Touch Handling
+            function setupMobileTouchEvents() {
+                noBtn.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    touchStartX = e.touches[0].clientX;
+                    touchStartY = e.touches[0].clientY;
+                    isDragging = true;
+                    noBtn.classList.add('mobile-touch');
+                });
+                
+                noBtn.addEventListener('touchmove', function(e) {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    
+                    const touchX = e.touches[0].clientX;
+                    const touchY = e.touches[0].clientY;
+                    
+                    const deltaX = touchX - touchStartX;
+                    const deltaY = touchY - touchStartY;
+                    
+                    const rect = noBtn.getBoundingClientRect();
+                    const containerRect = optionsContainer.getBoundingClientRect();
+                    
+                    let newX = rect.left - containerRect.left + deltaX;
+                    let newY = rect.top - containerRect.top + deltaY;
+                    
+                    newX = Math.max(10, Math.min(newX, containerRect.width - rect.width - 10));
+                    newY = Math.max(10, Math.min(newY, containerRect.height - rect.height - 10));
+                    
+                    noBtn.style.left = `${newX}px`;
+                    noBtn.style.top = `${newY}px`;
+                    
+                    touchStartX = touchX;
+                    touchStartY = touchY;
+                });
+                
+                noBtn.addEventListener('touchend', function(e) {
+                    if (isDragging) {
+                        isDragging = false;
+                        noBtn.classList.remove('mobile-touch');
+                        handleNoButtonInteraction();
+                    }
+                });
             }
             
-            // Save stats to localStorage
-            function saveStats() {
-                localStorage.setItem('felixFelistusStats', JSON.stringify(stats));
+            // Desktop Hover Handling
+            function setupDesktopHoverEvents() {
+                noBtn.addEventListener('mouseenter', handleNoButtonInteraction);
+                noBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    handleNoButtonInteraction();
+                });
             }
             
-            // Initial romantic message
-            setTimeout(() => {
-                showResponse("Felistus, I'm waiting for your answer... ❤️");
-            }, 2000);
+            // Initialize
+            function init() {
+                createFloatingHearts();
+                
+                if (isMobile) {
+                    setupMobileTouchEvents();
+                } else {
+                    setupDesktopHoverEvents();
+                }
+                
+                yesBtn.addEventListener('click', handleYesButtonClick);
+                moveNoButton();
+                
+                setTimeout(() => {
+                    showResponse("Felistus, I'm waiting with bated breath... ❤️");
+                }, 1500);
+            }
             
-            // Add a heart every 30 seconds to encourage engagement
-            setInterval(() => {
-                stats.totalHearts++;
-                updateStatsDisplay();
-                saveStats();
-            }, 30000);
+            init();
         });
     </script>
 </body>
